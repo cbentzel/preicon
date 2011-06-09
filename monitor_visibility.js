@@ -1,17 +1,17 @@
 function createPrerenderWatcher() {
-    var wasPrerendered = false;
+    function isPrerendered() {
+        return document.webkitVisibilityState == "prerender";
+    }
+    function isVisible() {
+        return document.webkitVisibilityState == "visible";
+    }
+    var wasPrerendered = isPrerendered();
     function onChange() {
-        if (document.webkitVisibilityState == "prerender") {
+        if (isPrerendered()) {
             wasPrerendered = true;
         }
-        if (document.webkitVisibilityState == "visible") {
-            if (wasPrerendered) {
-                console.log("Now visible, was prerendered");
-            } else {
-                console.log("Now visible, not prerendered");
-            }
-            console.log("About to send request");
-            chrome.extension.sendRequest({"prerender": wasPrerendered}, function(response) {});
+        if (isVisible() && wasPrerendered) {
+            chrome.extension.sendRequest({}, function(response) {});
         }
     }
     return onChange;

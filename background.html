@@ -2,15 +2,11 @@
   <head>
     <script>
       function onRequest(request, sender, sendResponse) {
-        console.log("Handling request");
-        if (request.prerender) {
-          console.log("Trying to show page action");
-          chrome.pageAction.show(sender.tab.id);
-        }
+        chrome.pageAction.show(sender.tab.id);
         sendResponse({});
       }
       chrome.extension.onRequest.addListener(onRequest);
-      </script>
+    </script>
   </head>
   <body>
   </body>
