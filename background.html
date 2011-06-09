@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script>
+      function onRequest(request, sender, sendResponse) {
+        console.log("Handling request");
+        if (request.prerender) {
+          chrome.pageAction.show(sender.tab.id);
+        }
+        sendResponse({});
+      }
+      chrome.extension.onRequest.addListener(onRequest);
+      </script>
+  </head>
+  <body>
+  </body>
+</html>

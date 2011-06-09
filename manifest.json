@@ -1,0 +1,17 @@
+{
+  "name": "Display Prerender Icon",
+  "version": "0.1",
+  "description": "Displays an icon in the omnibox when the current page is prerendered.",
+  "background_page": "background.html",
+  "page_action": {
+    "default_icon" : "prerender_19.png",
+    "default_title": "This page was prerendered"
+  },
+  "content_scripts": [
+    {
+      // https is not needed since Chrome doesn't currently prerender https pages.
+      "matches": ["http://*/*"],
+      "js": ["monitor_visibility.js"]
+    }
+  ]
+}
