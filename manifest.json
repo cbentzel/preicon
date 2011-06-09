@@ -1,6 +1,6 @@
 {
   "name": "Display Prerender Icon",
-  "version": "0.1",
+  "version": "1.0",
   "description": "Displays an icon in the omnibox when the current page is prerendered.",
   "background_page": "background.html",
   "page_action": {
