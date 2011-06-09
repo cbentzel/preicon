@@ -4,6 +4,7 @@
       function onRequest(request, sender, sendResponse) {
         console.log("Handling request");
         if (request.prerender) {
+          console.log("Trying to show page action");
           chrome.pageAction.show(sender.tab.id);
         }
         sendResponse({});
